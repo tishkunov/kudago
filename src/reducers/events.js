@@ -1,7 +1,8 @@
-import { GET_EVENTS_SUCCESS } from './../constants/events'
+import { GET_EVENTS_SUCCESS, GET_EVENTS_FAIL } from './../constants/events'
 
 const initialState = {
   events: [],
+  error: null
 }
 
 export default function data(state = initialState, action) {
@@ -10,6 +11,10 @@ export default function data(state = initialState, action) {
 		 	return {...state,
 		 			 events: action.payload,
 		 			}	
+		case GET_EVENTS_FAIL: 
+			return {...state,
+					error:action.payload
+					}			
 		default:
     		return state;
   }

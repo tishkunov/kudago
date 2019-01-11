@@ -3,7 +3,7 @@ import './App.css'
 import { BrowserRouter, Route } from 'react-router-dom'
 
 import Events from './containers/events'
-
+import Event from './containers/event'
 
 
 
@@ -13,13 +13,12 @@ class App extends Component {
   
   render() {
     return (
-      <div className="App">
         <BrowserRouter>
           <Fragment>
-            <Route path="/" exact component={Events} />            
+            <Route path="/" exact component={Events} />
+            <Route path="/events/:id" exact component={Event} />            
           </Fragment>
         </BrowserRouter>
-      </div>
     )
   }
 }

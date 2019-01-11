@@ -26,10 +26,10 @@ class Events extends Component {
 
 
   render() {
-    const { events } = this.props
-    console.log(events)
+    const { events, error } = this.props
     return (
       <div className="events">
+        {error && 'Ошибка при загрузке событий, попробуйте перезагрузить страницу'}
         {events.map((item,i) => {
           return (
               <EventItem 
@@ -38,12 +38,11 @@ class Events extends Component {
                 image={item.images[0].image}
                 place={item.place.title + ', ' + item.place.address}
                 dateStart={item.dates[item.dates.length-1]}
+                id={item.id}
                />
             )
         })}
-        <PaginationEvents/>
-
-     
+        <PaginationEvents/>   
       </div>
     );
   }
@@ -52,6 +51,7 @@ class Events extends Component {
 const mapStateToProps = state => ({
   events: eventsSelector(state),
   loading: state.loader.loading,
+  error: state.events.error
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -68,7 +68,8 @@ Events.propTypes = {
      title: PropTypes.string.isRequired,
      images: PropTypes.array.isRequired,
      place: PropTypes.object.isRequired,
-     dates: PropTypes.array.isRequired
+     dates: PropTypes.array.isRequired,
+     id: PropTypes.number.isRequired
    })).isRequired,
 };
 

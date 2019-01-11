@@ -4,6 +4,8 @@ const axios = require('axios');
 const { unixTimeRightNow, unixTimeTwoWeeks } = require('./../helpers/unixTimestamp');
 const app = express();
 
+const baseUrl = 'https://kudago.com/public-api/v1.4/events'
+
 app.use(bodyParser.json());
 
 app.use((req, res, next) => {
@@ -20,11 +22,21 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.get('/api/events', async (req, res) => {
-	const result = await axios.get(`https://kudago.com/public-api/v1.4/events/?page_size=100&order_by=id&location=spb&expand=place,dates&fields=place,id,dates,title,location,images&actual_since=${unixTimeRightNow}&actual_until=${unixTimeTwoWeeks}`)
+	const result = await axios.get(`${baseUrl}/?page_size=100&order_by=id&location=spb&expand=place,dates&fields=place,id,dates,title,location,images&actual_since=${unixTimeRightNow}&actual_until=${unixTimeTwoWeeks}`)
 						.catch(err => console.log(err));
 	res.send(result.data.results);
 
 })
+
+app.post('/api/event', async (req, res) => {
+	const result = await axios.get(`${baseUrl}/${req.body.id}/?lang=ru&fields=place,id,dates,title,location,images&expand=place,dates`)
+						.catch(err => console.log(err));
+						
+	res.send(result.data);
+
+})
+
+
 
 
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { setPage } from './../actions/pagination'
 import Pagination from 'react-ultimate-pagination-bootstrap-4';
+import PropTypes from 'prop-types'
 
 class PaginationEvents extends Component {
 
@@ -28,7 +29,10 @@ const mapStateToProps = state => ({
   currentPage: state.pagination.currentPage
 })
 
-
+PaginationEvents.propTypes = {
+  currentPage: PropTypes.number.isRequired,
+  countPages: PropTypes.number.isRequired
+};
 
 
 export default connect(mapStateToProps, {setPage})(PaginationEvents)
