@@ -18,6 +18,7 @@ const store = createStore(
 
 sagaMiddleware.run(rootSaga);
 
+//Подписываемся на сторе и сохраняем состояние в localStorage
 store.subscribe(throttle(() => {
 	saveState({
 		events: store.getState().events

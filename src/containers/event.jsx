@@ -6,12 +6,14 @@ import LoaderHOC from './../HOC/Loader'
 import PropTypes from 'prop-types'
 import EventComponent from './../components/event'
 import { removeTags } from './../helpers/removeHTMLtags'
+import { Link } from 'react-router-dom'
 
 class Event extends Component {
 
   componentDidMount () {
     const { match, getEvent, fetching } = this.props
     getEvent(match.params.id) && fetching()
+    
   }
 
 
@@ -25,7 +27,11 @@ class Event extends Component {
             title
             } = this.props.event
 
-    return <EventComponent 
+    return this.props.error ? 
+              <p>Произошла ошибка при загрузке события<br/>
+                <Link to='/'>Вернуться на главную страницу</Link>
+              </p> : 
+              <EventComponent 
               images={images}
               title={title}
               site_url={site_url}
@@ -39,7 +45,8 @@ class Event extends Component {
 
 const mapStateToProps = state => ({
   loading: state.loader.loading,
-  event: state.event.event
+  event: state.event.event,
+  error: state.event.error,
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -52,15 +59,7 @@ const mapDispatchToProps = dispatch => ({
 })
 
 Event.propTypes = {
-  event: PropTypes.arrayOf(PropTypes.shape({
-     title: PropTypes.string.isRequired,
-     images: PropTypes.array.isRequired,
-     place: PropTypes.object.isRequired,
-     dates: PropTypes.array.isRequired,
-     site_url: PropTypes.string.isRequired,
-     body_text: PropTypes.string.isRequired,
-     description: PropTypes.string.isRequired,
-   })).isRequired,
+  event: PropTypes.object.isRequired
 };
 
 

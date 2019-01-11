@@ -11,7 +11,7 @@ export const event = [
 function* getEventSaga(action) {
   try {
 	const data = yield call(getEvent, action.payload)
-	console.log(data)
+	
     yield put({ type: GET_EVENT_SUCCESS , payload:data})
     yield put({ type: FETCHING_SUCCESS , payload:data}) // Отмена лоадера  
 
