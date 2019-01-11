@@ -7,7 +7,7 @@ import EventItem from './../components/eventItem'
 import LoaderHOC from './../HOC/Loader'
 import { eventsSelector } from './../helpers/eventsPaginationSelector'
 import PropTypes from 'prop-types'
-
+import PaginationEvents from './pagination'
 
 
 class Events extends Component {
@@ -21,11 +21,13 @@ class Events extends Component {
       fetching()
       getEvents()
     }
-      
+   
   }
+
 
   render() {
     const { events } = this.props
+    console.log(events)
     return (
       <div className="events">
         {events.map((item,i) => {
@@ -39,6 +41,9 @@ class Events extends Component {
                />
             )
         })}
+        <PaginationEvents/>
+
+     
       </div>
     );
   }
@@ -46,7 +51,7 @@ class Events extends Component {
 
 const mapStateToProps = state => ({
   events: eventsSelector(state),
-  loading: state.loader.loading
+  loading: state.loader.loading,
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -55,7 +60,7 @@ const mapDispatchToProps = dispatch => ({
   },
   fetching: () => {
     dispatch(fetching())
-  }
+  },
 })
 
 Events.propTypes = {

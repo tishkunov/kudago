@@ -16,9 +16,7 @@ class App extends Component {
       <div className="App">
         <BrowserRouter>
           <Fragment>
-            <Route path="/" exact component={Events} />
-            <Route path="/:pageId" exact component={Events} />
-            
+            <Route path="/" exact component={Events} />            
           </Fragment>
         </BrowserRouter>
       </div>
