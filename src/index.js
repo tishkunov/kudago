@@ -5,7 +5,7 @@ import * as serviceWorker from './serviceWorker';
 import store from './store'
 import { Provider } from 'react-redux'
 import { ErrorBoundary } from './ErrorBoundary'
-
+import 'bootstrap/dist/css/bootstrap.css';
 
 ReactDOM.render(
 	<Provider store={store}>
