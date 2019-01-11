@@ -29,7 +29,7 @@ app.get('/api/events', async (req, res) => {
 })
 
 app.post('/api/event', async (req, res) => {
-	const result = await axios.get(`${baseUrl}/${req.body.id}/?lang=ru&fields=place,id,dates,title,location,images&expand=place,dates`)
+	const result = await axios.get(`${baseUrl}/${req.body.id}/?lang=ru&fields=place,id,dates,title,location,images,description,body_text,site_url&expand=place,dates`)
 						.catch(err => console.log(err));
 						
 	res.send(result.data);

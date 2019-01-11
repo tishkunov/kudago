@@ -10,8 +10,6 @@ export const event = [
 
 function* getEventSaga(action) {
   try {
-  	const id = {id: action.payload}
-  	console.log(id)
 	const data = yield call(getEvent, action.payload)
 	console.log(data)
     yield put({ type: GET_EVENT_SUCCESS , payload:data})

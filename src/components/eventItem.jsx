@@ -11,9 +11,10 @@ function EventItem({title, image, place, dateStart, id}) {
 		    </Link>	
 		    <p className="card-text">{place}
 		    	<br/> 
-		    	Начало: {dateStart.start_date} {dateStart.start_time}
+		    	{dateStart.start_date && `Начало:${dateStart.start_date} ${dateStart.start_time}` }  
 		    	<br/>
-		    	Окончание: {dateStart.end_time} </p>
+		    	{dateStart.end_time && `Окончание: ${dateStart.end_time}` }
+		    	  </p>	  
 		    <Link className="btn btn-primary" to={`/events/${id}`}>Посмотреть </Link>	
 		    
 		  </div>

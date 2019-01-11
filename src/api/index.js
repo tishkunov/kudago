@@ -7,7 +7,7 @@ export const getEvents = () => fetch('/api/events', {
 // Запрос на одно событие
 export const getEvent = (id) => {
 	const eventId = JSON.stringify({id:id})
-	fetch('/api/event', {
+	return fetch('/api/event', {
 		body: eventId,
 		token: 1,
 		method: 'POST',
@@ -16,8 +16,9 @@ export const getEvent = (id) => {
 		}
 	})
 	.then(res => res.json())
-	.then(res => console.log(res))
 	.catch(err => console.log(err))
+
+
 } 
 
 							
