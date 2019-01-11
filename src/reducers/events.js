@@ -8,7 +8,7 @@ const initialState = {
 export default function data(state = initialState, action) {
 	switch (action.type) {
 		case GET_EVENTS_SUCCESS:
-		 	return {...state, events: action.payload, currentPage:2}	
+		 	return {...state, events: action.payload, currentPage:1}	
 		
 		default:
     		return state;

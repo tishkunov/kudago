@@ -19,7 +19,9 @@ const store = createStore(
 sagaMiddleware.run(rootSaga);
 
 store.subscribe(throttle(() => {
-	saveState(store.getState())
+	saveState({
+		events: store.getState().events
+	})
 }, 1000))
 
 export default store;
