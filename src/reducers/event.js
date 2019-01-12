@@ -22,6 +22,7 @@ export default function data(state = initialState, action) {
 		case GET_EVENT_SUCCESS:
 		 	return {...state,
 		 			 event: action.payload,
+           error: null
 		 			}	
 		case GET_EVENT_FAIL:
 			return {...state,
