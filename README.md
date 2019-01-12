@@ -9,11 +9,18 @@ Web-app based on react&redux with KudaGO API.
 npm install
 ```
 
-### Run
+### Run server
+
+```sh
+node src/server/index.js
+
+
+```
+### Run client
 
 ```sh
 npm run start
-node src/server/index.js
+
 ```
 
 
