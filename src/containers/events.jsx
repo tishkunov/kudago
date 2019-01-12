@@ -11,12 +11,10 @@ import PaginationEvents from './pagination'
 
 
 class Events extends Component {
-  state = {
-    
-  }
 
   componentDidMount () {
     const { events, getEvents, fetching } = this.props
+    console.log(events.length)
     if (events.length === 0) {
       fetching()
       getEvents()
@@ -26,7 +24,9 @@ class Events extends Component {
 
 
   render() {
+    // const sorting = (a,b) => a.dates[a.dates.length-1].
     const { events, error } = this.props
+    console.log(events)
     return (
       <div className="events">
         {error && 'Ошибка при загрузке событий, попробуйте перезагрузить страницу'}
@@ -54,14 +54,7 @@ const mapStateToProps = state => ({
   error: state.events.error
 })
 
-const mapDispatchToProps = dispatch => ({
-  getEvents: () => {
-    dispatch(getEvents())
-  },
-  fetching: () => {
-    dispatch(fetching())
-  },
-})
+
 
 Events.propTypes = {
   events: PropTypes.arrayOf(PropTypes.shape({
@@ -75,4 +68,4 @@ Events.propTypes = {
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoaderHOC(Events))
+export default connect(mapStateToProps, { getEvents, fetching})(LoaderHOC(Events))

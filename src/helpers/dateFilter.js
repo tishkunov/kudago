@@ -1,0 +1,1 @@
+export const dateFilter = (a,b) => a.dates[a.dates.length-1].start - b.dates[b.dates.length-1].start 
