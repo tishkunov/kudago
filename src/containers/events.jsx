@@ -24,9 +24,8 @@ class Events extends Component {
 
 
   render() {
-    // const sorting = (a,b) => a.dates[a.dates.length-1].
+
     const { events, error } = this.props
-    console.log(events)
     return (
       <div className="events">
         {error && 'Ошибка при загрузке событий, попробуйте перезагрузить страницу'}
